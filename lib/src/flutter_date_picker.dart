@@ -21,6 +21,7 @@ class FlutterDatePicker extends StatefulWidget {
     DateTime date,
   )?
   onDateChanged;
+  final TextStyle? unselectedTextStyle;
 
   const FlutterDatePicker({
     super.key,
@@ -37,6 +38,7 @@ class FlutterDatePicker extends StatefulWidget {
     required this.digitStyle,
     this.style = EPickerStyle.monthDay,
     this.centerDecoration,
+    this.unselectedTextStyle,
   });
 
   @override
@@ -154,6 +156,7 @@ class _FlutterDatePickerState extends State<FlutterDatePicker> {
                   ),
                   values: calculateMonthValues(),
                   textStyle: widget.digitStyle,
+                  unselectedTextStyle: widget.unselectedTextStyle,
                 ),
               ),
               Spacer(),
@@ -166,6 +169,7 @@ class _FlutterDatePickerState extends State<FlutterDatePicker> {
                   ),
                   values: calculateYearsValues(),
                   textStyle: widget.digitStyle,
+                  unselectedTextStyle: widget.unselectedTextStyle,
                 ),
               ),
             ],

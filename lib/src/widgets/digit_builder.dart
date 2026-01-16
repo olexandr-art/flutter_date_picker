@@ -6,6 +6,7 @@ class DigitBuilder extends StatefulWidget {
   final double height;
   final Function(String value) onPageChanged;
   final TextStyle textStyle;
+  final TextStyle? unselectedTextStyle;
 
   const DigitBuilder({
     super.key,
@@ -14,6 +15,7 @@ class DigitBuilder extends StatefulWidget {
     this.height = 40.0,
     required this.onPageChanged,
     required this.textStyle,
+    this.unselectedTextStyle,
   });
 
   @override
@@ -52,11 +54,16 @@ class _DigitBuilderState extends State<DigitBuilder> {
       },
       itemBuilder: (context, index) {
         final value = widget.values[index];
+        final isSelected = index == selectedIndex;
+        final textStyle = isSelected
+            ? widget.textStyle
+            : (widget.unselectedTextStyle ?? widget.textStyle);
+
         return SizedBox(
           height: widget.height,
           child: Text(
             value,
-            style: widget.textStyle,
+            style: textStyle,
           ),
         );
       },
